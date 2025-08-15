@@ -1,0 +1,10 @@
+streamlit
+scikit-learn
+pandas
+python-docx
+supabase
+PIL
+base64
+matplotlib
+docx
+io
