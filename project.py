@@ -225,7 +225,7 @@ def menu_utama():
 # --- Halaman Login ---
 if not st.session_state.login_status:
     # Set background samar
-    set_bg("D:\project_kmeans_samsat\kantorsamsat.jpg")
+    set_bg("kantorsamsat.jpg")
 
     # Judul login (tebal & warna hitam)
     st.markdown(
@@ -244,4 +244,5 @@ if not st.session_state.login_status:
     if st.button("Login"):
         login(username, password)
 else:
+
     menu_utama()
