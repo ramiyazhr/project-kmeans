@@ -2,11 +2,11 @@ streamlit
 supabase
 pandas
 scikit-learn
-PIL
+Pillow
 base64
 matplotlib
 python-docx
-io
+
 
 
 
