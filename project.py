@@ -114,7 +114,7 @@ def menu_utama():
 
     # ====== Konten Halaman (sementara placeholder dulu) ======
     if pilihan == "Input Data Tunggakan":
-    st.subheader("💰 Input Data Tunggakan Pajak (Tahunan per Zona)")
+        st.subheader("💰 Input Data Tunggakan Pajak (Tahunan per Zona)")
     with st.form("form_tunggakan"):
         wilayah = st.text_input("Nama Wilayah")
         total_denda = st.number_input("Total Denda (Rp)", min_value=0, step=1000)
@@ -265,5 +265,6 @@ if not st.session_state.login_status:
 else:
 
     menu_utama()
+
 
 
