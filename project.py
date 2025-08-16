@@ -94,30 +94,29 @@ def menu_utama():
 
     # ====== Konten Halaman (sementara placeholder dulu) ======
     if pilihan == "Input Data Tunggakan":
-        st.subheader("💰 Input Data Tunggakan Pajak (Per Zona)")
-        with st.form("form_tunggakan"):
-            wilayah = st.text_input("Nama Wilayah")
-            total_denda = st.number_input("Total Denda (Rp)", min_value=0, step=1000)
-            bulan = st.selectbox("Bulan", list(range(1, 13)))
-            tahun = st.number_input("Tahun", min_value=2020, max_value=2030, value=2024)
-            submit = st.form_submit_button("Simpan Data")
+    st.subheader("💰 Input Data Tunggakan Pajak (Tahunan per Zona)")
+    with st.form("form_tunggakan"):
+        wilayah = st.text_input("Nama Wilayah")
+        total_denda = st.number_input("Total Denda (Rp)", min_value=0, step=1000)
+        tahun = st.number_input("Tahun", min_value=2020, max_value=2030, value=2024)
+        submit = st.form_submit_button("Simpan Data")
 
-        if submit:
-            existing = st.session_state.data[
-                (st.session_state.data["Wilayah"] == wilayah) &
-                (st.session_state.data["Bulan"] == bulan) &
-                (st.session_state.data["Tahun"] == tahun)
-            ]
-            if not existing.empty:
-                st.error("⚠️ Data untuk wilayah & periode ini sudah ada. Tidak bisa disimpan.")
-            else:
-                st.session_state.data = pd.concat(
-                    [st.session_state.data,
-                     pd.DataFrame([[wilayah, total_denda, bulan, tahun]],
-                                  columns=["Wilayah", "Total Denda", "Bulan", "Tahun"])],
-                    ignore_index=True
-                )
-                st.success(f"✅ Data wilayah **{wilayah}** berhasil disimpan untuk {bulan}/{tahun}!")
+    if submit:
+        # cek apakah data untuk wilayah & tahun sudah ada
+        existing = st.session_state.data[
+            (st.session_state.data["Wilayah"] == wilayah) &
+            (st.session_state.data["Tahun"] == tahun)
+        ]
+        if not existing.empty:
+            st.error("⚠️ Data untuk wilayah & tahun ini sudah ada. Tidak bisa disimpan.")
+        else:
+            st.session_state.data = pd.concat(
+                [st.session_state.data,
+                 pd.DataFrame([[wilayah, total_denda, tahun]],
+                              columns=["Wilayah", "Total Denda", "Tahun"])],
+                ignore_index=True
+            )
+            st.success(f"✅ Data wilayah **{wilayah}** berhasil disimpan untuk tahun {tahun}!")
 
     elif pilihan == "Klasterisasi K-Means":
         st.subheader("📈 Klasterisasi Metode K-Means")
@@ -246,3 +245,4 @@ if not st.session_state.login_status:
 else:
 
     menu_utama()
+
