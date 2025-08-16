@@ -60,7 +60,26 @@ def set_bg(image_file):
     st.markdown(css, unsafe_allow_html=True)
 
 def menu_utama():
-    # ====== Header sambutan dengan kotak background samar ======
+    # ====== Custom CSS ======
+    st.markdown(
+        """
+        <style>
+        /* Sidebar (menu) */
+        section[data-testid="stSidebar"] {
+            background-color: #e0e0e0; /* abu-abu */
+        }
+        /* Halaman utama (konten) */
+        .main {
+            background-color: #fff8dc; /* kuning soft */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # ====== Header sambutan ======
     st.markdown(
         """
         <div style="
@@ -72,7 +91,8 @@ def menu_utama():
             margin-bottom: 16px;
         ">
             <h3 style="margin:0; text-align:center; color:#111; font-weight:400; line-height:1.4;">
-                Selamat datang di Sistem <b>Implementasi Metode K-Means Clustering</b> Tunggakan Pajak Kendaraan Bermotor
+                Selamat datang di Sistem <b>Implementasi Metode K-Means Clustering</b> 
+                Tunggakan Pajak Kendaraan Bermotor
             </h3>
         </div>
         """,
@@ -245,4 +265,5 @@ if not st.session_state.login_status:
 else:
 
     menu_utama()
+
 
