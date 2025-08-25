@@ -13,8 +13,8 @@ if "data" not in st.session_state:
     st.session_state["data"] = pd.DataFrame(columns=["Wilayah", "Total Denda", "Bulan", "Tahun"])
 
 # --- Koneksi Supabase ---
-url = st.secrets "https://xdxbqsiofkjjmhnypxku.supabase.co"
-key = st.secrets "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkeGJxc2lvZmtqam1obnlweGt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxNzE5NjIsImV4cCI6MjA3MDc0Nzk2Mn0.dtQQLg76h2ZS7ZeDzfxkW00k3ix9Rs9BohkWU7Hhyxs"
+url = "https://xdxbqsiofkjjmhnypxku.supabase.co"
+key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkeGJxc2lvZmtqam1obnlweGt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxNzE5NjIsImV4cCI6MjA3MDc0Nzk2Mn0.dtQQLg76h2ZS7ZeDzfxkW00k3ix9Rs9BohkWU7Hhyxs"
 supabase = create_client(url, key)
 
 # --- Inisialisasi Session State ---
@@ -245,6 +245,7 @@ if not st.session_state.login_status:
 else:
 
     menu_utama()
+
 
 
 
